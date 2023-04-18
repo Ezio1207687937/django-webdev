@@ -1,0 +1,16 @@
+<h2>{{ post.title }}</h2>
+<p>{{ post.pub_date }}</p>
+<p>{{ post.content }}</p>
+
+<h3>Comments:</h3>
+{% for comment in comments %}
+    <p><strong>{{ comment.author }}</strong> - {{ comment.pub_date }}</p>
+    <p>{{ comment.content }}</p>
+{% endfor %}
+
+<h3>Add a Comment:</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
